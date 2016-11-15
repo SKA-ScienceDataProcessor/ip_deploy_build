@@ -1,0 +1,5 @@
+{
+  "redisport" : 6379, 
+  "imagelist" : "images", 
+  "log" : "log"
+}
