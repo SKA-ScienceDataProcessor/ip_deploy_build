@@ -4,15 +4,13 @@ class DAO():
 
     def __init__(self, config):
         self.conf = config
-        self.r = new RedisConnection(self.conf['redisport'])
+        self.r = redis.StrictRedis(host=self.conf['redisport'],port==self.conf['redishost'], db=0 )
 
     def get_images(self):
         '''
            Gets the images from the list
         '''
         return join(',', self.r.lrange(self.conf["images"], 0. -1))
-
-        return image_list
 
     def put_log(self, log_line):
         '''
