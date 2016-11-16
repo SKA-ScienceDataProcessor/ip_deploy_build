@@ -10,7 +10,7 @@ class DAO():
         '''
            Gets the images from the list
         '''
-        return join(',', self.r.get(self.conf["images"]))
+        return join(',', self.r.lrange(self.conf["images"], 0. -1))
 
         return image_list
 
