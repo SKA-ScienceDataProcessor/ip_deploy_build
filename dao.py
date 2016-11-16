@@ -18,10 +18,10 @@ class DAO():
         '''
            List the log into the store
         '''
-        self.r.put(self.conf["log"], log_line)
+        self.r.rpush(self.conf["log"], log_line)
 
     def put_images(self, image_name):
         '''
           Store the image name
         '''
-        self.r.put(self.conf["images"], image_name)
+        self.r.rpush(self.conf["images"], image_name)
