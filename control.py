@@ -2,7 +2,7 @@ import sys
 
 import config
 import dao
-imprt ipmi
+import ipmi
 
 cmd = sys.argv[1]
 ip = sys.argv[2]
@@ -16,9 +16,9 @@ dao = DAO()
 
 logline = join(" ", sys.argv)
 dao.put_log(time.now() + " " + logline )
-if cmd = "install":
+if cmd == "install":
     ipmi()
-elif cmd = images":
+elif cmd == "images":
     print(dao.get_images())
 else:
     print("Command not supported")
