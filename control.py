@@ -1,8 +1,10 @@
 import sys
+from datetime import datetime
 
 from config import Config
 from dao import DAO
 from ipmi import lom_ipmi
+
 
 cmd = sys.argv[1]
 ip = sys.argv[2]
@@ -20,10 +22,11 @@ if not config:
     print "Could not find config file"
     sys.exit(0)
 
-dao = DAO()
+dao = DAO(config)
 
-logline = join(" ", sys.argv)
-dao.put_log(time.now() + " " + logline )
+logline = " ".join(sys.argv)
+dao.put_log(str(datetime.now()) + " " + logline )
+
 if cmd == "install":
     lom_ipmi().connection_auth("user", "pass").host(config, ip).command(cmd)
 elif cmd == "images":
