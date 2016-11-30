@@ -28,7 +28,10 @@ logline = " ".join(sys.argv)
 dao.put_log(str(datetime.now()) + " " + logline )
 
 if cmd == "install":
-    lom_ipmi().connection_auth("user", "pass").host(config, ip).command(cmd)
+    lom_ipmi().connection_auth(config["user"], config["pass"]).host(config, ip).command("pxe").run_command()
+    lom_ipmi().connection_auth(config["user"], config["pass"]).host(config, ip).command("cycle").run_command()
+elif cmd == "on" or cmd == "off" or cmd == "cycle":
+    lom_ipmi().connection_auth(config["user"], config["pass"]).host(config, ip).command(cmd).run_command()
 elif cmd == "images":
     print(dao.get_images())
 else:
