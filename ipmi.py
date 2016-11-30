@@ -52,12 +52,12 @@ class lom_ipmi():
             self.cmd = "chassis power " + cmd
         return self
 
-    def host(self, ip):
+    def host(self, config, ip):
         '''
            Checks the ip is valid and adds to the line
         '''
         if self._check_ip(ip):
-            self.ip = ip
+            self.ip = config + str(ip)
         return self
 
     def run_command(self):
