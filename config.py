@@ -6,4 +6,9 @@ class Config():
         if fname is None:
             print("No file given")
 
+        data = None
+
+        with (fname, 'rb') as f:
+            data = f.read()
+        f.closed
         return json.loads(fname)
