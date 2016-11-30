@@ -2,6 +2,8 @@
   "redisport" : 6379,
   "redis host": "127.0.0.1", 
   "imagelist" : "images", 
-  "log" : "log"
-  "base" : 
+  "log" : "log",
+  "base" : ,
+  "user" : ,
+  "pass" :
 }
