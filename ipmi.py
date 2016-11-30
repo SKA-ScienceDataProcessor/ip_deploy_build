@@ -2,9 +2,13 @@
    Wrapper around IPMI for simple machine management
 '''
 
+import subprocess
+from datetime import datetime
+from dao import DAO
+
 class lom_ipmi():
     '''
-      IPMI commands
+      Fluent API to build the IPMI command. Only a subset of the commands are used. 
     '''
     def __init__(self):
         self.interface = "ipmitools"
@@ -60,15 +64,18 @@ class lom_ipmi():
             self.ip = config['base'] + str(ip)
         return self
 
-    def run_command(self):
+    def run_command(self, config):
         '''
            Runs the command via a subprocess
         '''
+        dao = DAO(config)
         try:
-            p = subprocess.check_output(self.build_command())
-        except CalledProcessError as cpe:
-            print(cpe.cmd)
-            print(cpe.output)
+            dao.put_log(str(datetime.now()) + " " + self.build_command())
+            p = subprocess.check_output(self.interface + " " + self.build_command(), shell=True, stderr=subprocess.STDOUT)
+            dao.put_log(str(datetime.now()) + " " + p)
+        except subprocess.CalledProcessError as cpe:
+            dao.put_log(str(datetime.now()) + " " + cpe.cmd)
+            dao.put_log(str(datetime.now()) + " " + cpe.output)
 
     def build_command(self):
         '''
@@ -80,6 +87,6 @@ class lom_ipmi():
         if not self.cmd:
             raise Exception("Command not given")
 
-        return [self.interface, "-v", "-I", self.intf_type, "-H", self.ip,
-                     "-U", self.user, "-P", self.passwd, self.cmd ]
+        return ' '.join([" -U", self.user, "-P", self.passwd, "-vI", self.intf_type,
+                     "-H", self.ip, self.cmd ])
 
