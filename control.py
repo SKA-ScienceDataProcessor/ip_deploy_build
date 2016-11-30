@@ -25,7 +25,7 @@ dao = DAO()
 logline = join(" ", sys.argv)
 dao.put_log(time.now() + " " + logline )
 if cmd == "install":
-    lom_ipmi().connection_auth("user", "pass").host(ip).command(cmd)
+    lom_ipmi().connection_auth("user", "pass").host(config, ip).command(cmd)
 elif cmd == "images":
     print(dao.get_images())
 else:

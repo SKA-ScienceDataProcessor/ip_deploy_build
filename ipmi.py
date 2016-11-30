@@ -57,7 +57,7 @@ class lom_ipmi():
            Checks the ip is valid and adds to the line
         '''
         if self._check_ip(ip):
-            self.ip = config + str(ip)
+            self.ip = config['base'] + str(ip)
         return self
 
     def run_command(self):
