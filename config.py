@@ -8,7 +8,7 @@ class Config():
 
         data = None
 
-        with (fname, 'rb') as f:
+        with open(fname, 'rb') as f:
             data = f.read()
         f.closed
-        return json.loads(fname)
+        return json.loads(data)
