@@ -1,7 +1,7 @@
 import sys
 
-import config
-import dao
+from config import Config
+from dao import DAO
 from ipmi import lom_ipmi
 
 cmd = sys.argv[1]
