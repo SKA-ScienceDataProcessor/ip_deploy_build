@@ -4,7 +4,7 @@ class DAO():
 
     def __init__(self, config):
         self.conf = config
-        self.r = redis.StrictRedis(host=self.conf['redisport'],port==self.conf['redishost'], db=0 )
+        self.r = redis.StrictRedis(host=self.conf['redisport'],port=self.conf['redishost'], db=0 )
 
     def get_images(self):
         '''
