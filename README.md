@@ -15,13 +15,14 @@ Logging is provided by the DAO file. At present, this is provided by Redis, a li
 #### Dependencies
 
 ipmitool must be installed on the host machine.
+pyredis
 
 If you get an error that it can find /dev/ipmi0 or /dev/ipmidev/0, it needs adding to the kernel.
 Run the following as sudo:
 modprobe ipmi_devintf
 modprobe ipmi_si
 
-Redis (redis.io)
+(Redis) [redis.io]
 
 #### License
 See the license file
