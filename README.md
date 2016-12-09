@@ -22,7 +22,7 @@ Run the following as sudo:
 modprobe ipmi_devintf
 modprobe ipmi_si
 
-[Redis] (redis.io)
+[Redis] (https://redis.io/)
 
 #### License
 See the license file
